@@ -82,12 +82,12 @@ WSGI_APPLICATION = 'my_site.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'URL': os.getenv('POSTGRES_URL'),
-        'NAME': os.getenv('PGNAME'),
-        'USER': os.getenv('PGUSER'),
-        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
-        'HOST': os.getenv('PGHOST'),
-        'PORT': os.getenv('PGPORT),
+        'URL': ('postgresql://postgres:44ebeagCG--Cb25D4a4EAbFAddAEEa3D@viaduct.proxy.rlwy.net:34099/railway'),
+        'NAME': ('railway'),
+        'USER': ('postgres'),
+        'PASSWORD': ('44ebeagCG--Cb25D4a4EAbFAddAEEa3D'),
+        'HOST': ('viaduct.proxy.rlwy.net'),
+        'PORT': ('34099')
         
     }
 }
