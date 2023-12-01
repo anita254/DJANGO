@@ -10,7 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
-import os
 from pathlib import Path
 from os import getenv
 
@@ -28,7 +27,7 @@ SECRET_KEY = 'l1s5h%-io2b)u&4__&ms1g=x@b0v+!a!o2z6#sl!t$l45$ah^6'
 DEBUG = getenv("IS_DEVELOPMENT", True)
 
 ALLOWED_HOSTS = [
-    '127.0.0.1', '.vercel.app'
+    getenv("APP_HOST", "localhost")
 ]
 
 
@@ -80,16 +79,15 @@ WSGI_APPLICATION = 'my_site.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'URL': ('postgresql://postgres:44ebeagCG--Cb25D4a4EAbFAddAEEa3D@viaduct.proxy.rlwy.net:34099/railway'),
-        'NAME': ('railway'),
-        'USER': ('postgres'),
-        'PASSWORD': ('44ebeagCG--Cb25D4a4EAbFAddAEEa3D'),
-        'HOST': ('viaduct.proxy.rlwy.net'),
-        'PORT': ('34099')
-        
+        'NAME': 'postgres',
+        'USER': '<your-rds-db-username>',
+        'PASSWORD': '<your-rds-db-user-password>',
+        'HOST': '<your-rds-db-host>',
+        'PORT': '5432'
     }
 }
 
@@ -130,15 +128,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
-
-
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(
-    BASE_DIR, 'staticfiles', 'static')
+STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_URL = "/static/"
 
 STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
-MEDIA_URLS ='/files/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
+
+MEDIA_ROOT = BASE_DIR / "uploads"
+MEDIA_URL = "/files/"
