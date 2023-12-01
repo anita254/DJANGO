@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 from os import getenv
 
@@ -129,7 +130,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_ROOT = BASE_DIR / "staticfiles"
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+
+STATIC_ROOT = os.path.join(
+    BASE_DIR, 'staticfiles', 'static')
 
 STATIC_URL = '/static/'
 
@@ -138,4 +142,4 @@ STATICFILES_DIRS = [
 ]
 
 MEDIA_ROOT = BASE_DIR / "uploads"
-MEDIA_URL = "/files/"
+MEDIA_URL = os.path.join(BASE_DIR, 'files')
