@@ -27,7 +27,7 @@ SECRET_KEY = 'l1s5h%-io2b)u&4__&ms1g=x@b0v+!a!o2z6#sl!t$l45$ah^6'
 DEBUG = getenv("IS_DEVELOPMENT", True)
 
 ALLOWED_HOSTS = [
-    getenv("127.0.0.1",".vercel.app")
+    "127.0.0.1",".vercel.app"
 ]
 
 
@@ -83,11 +83,12 @@ WSGI_APPLICATION = 'my_site.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': '<your-rds-db-username>',
-        'PASSWORD': '<your-rds-db-user-password>',
-        'HOST': '<your-rds-db-host>',
-        'PORT': '5432'
+        'URL': 'postgresql://postgres:44ebeagCG--Cb25D4a4EAbFAddAEEa3D@viaduct.proxy.rlwy.net:34099/railway',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': '44ebeagCG--Cb25D4a4EAbFAddAEEa3D',
+        'HOST': 'viaduct.proxy.rlwy.net',
+        'PORT': '34099'
     }
 }
 
